@@ -54,5 +54,24 @@ namespace AdaMovieStoreSample.DataLayer
             }
         }
 
+        public Customer Update(Customer customer)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Remove(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Customer GetFullCustomer(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Save(Customer customer)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -12,20 +12,21 @@ using Dapper;
 
 namespace AdaMovieStoreSample.DataLayer
 {
-    public class MovieRepository: IMovieRepository
+    public class MovieRepository
     {
         private SqlConnection db = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFileName=C:\Users\Michelle\Source\Repos\AdaMovieStoreSample\AdaMovieStoreSample\AdaMovieStoreSample\App_Data\videoStore.mdf;Integrated Security=True");
+
+        public List<Movie> GetAll()
+        {
+            return this.db.Query<Movie>("select * from movies").ToList();
+        }
+
         public Movie Find(int id)
         {
             var dbArgs = new DynamicParameters();
             dbArgs.Add("id", id);
 
             return this.db.Query<Movie>("select * from movies where id=@id", dbArgs).First();
-        }
-
-        public List<Movie> GetAll()
-        {
-            return this.db.Query<Movie>("select * from movies").ToList();
         }
 
         public void Add(Movie movie)
