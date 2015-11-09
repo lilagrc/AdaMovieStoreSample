@@ -11,7 +11,7 @@ namespace AdaMovieStoreSample.Interfaces
     {
         Movie Find(int id);
         List<Movie> GetAll();
-        Movie Add(Movie movie);
+        void Add(Movie movie);
         Movie Update(Movie movie);
         void Remove(int id);
 

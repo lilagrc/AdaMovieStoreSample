@@ -14,20 +14,39 @@ namespace AdaMovieStoreSample.DataLayer
 {
     public class MovieRepository: IMovieRepository
     {
-        private IDbConnection db = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFileName=C:\Users\x1e5.NORD\Source\Repos\AdaMovieStoreSample\AdaMovieStoreSample\AdaMovieStoreSample\AdaMovieStoreSample\App_Data\movieStore.mdf;Integrated Security=True");
+        private SqlConnection db = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFileName=C:\Users\Michelle\Source\Repos\AdaMovieStoreSample\AdaMovieStoreSample\AdaMovieStoreSample\App_Data\videoStore.mdf;Integrated Security=True");
         public Movie Find(int id)
         {
-            throw new NotImplementedException();
+            var dbArgs = new DynamicParameters();
+            dbArgs.Add("id", id);
+
+            return this.db.Query<Movie>("select * from movies where id=@id", dbArgs).First();
         }
 
         public List<Movie> GetAll()
         {
-            return this.db.Query<Movie>("select * from movie").ToList();
+            return this.db.Query<Movie>("select * from movies").ToList();
         }
 
-        public Movie Add(Movie movie)
+        public void Add(Movie movie)
         {
-            throw new NotImplementedException();
+            db.Open();
+            try
+            {
+                SqlCommand command = new SqlCommand(
+                    "insert into movies (title, overview, release_date, inventory) values (@title, @overview, @release_date, @inventory)",
+                    this.db);
+                command.Parameters.AddWithValue("@title", movie.Title);
+                command.Parameters.AddWithValue("@overview", movie.Overview);
+                command.Parameters.AddWithValue("@release_date", movie.ReleaseDate);
+                command.Parameters.AddWithValue("@inventory", movie.Inventory);
+
+                command.ExecuteNonQuery();
+            }
+            finally
+            {
+                db.Close();
+            }
         }
 
         public Movie Update(Movie movie)
