@@ -11,7 +11,7 @@ namespace DatabaseSeeder
     {
         static void Main(string[] args)
         {
-            //Seeder.SeedMovies();
+            Seeder.SeedMovies();
             //Seeder.SeedCustomers();
         }
     }

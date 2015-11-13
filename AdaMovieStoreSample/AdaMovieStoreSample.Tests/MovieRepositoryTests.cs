@@ -6,23 +6,23 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 
 
-namespace AdaMovieStoreSample.Tests
-{
-    [TestClass]
-    public class MovieRepositoryTests
-    {
-        [TestMethod]
-        public void Get_all_should_return_3_results()
-        {
-            IMovieRepository repository = CreateRepository();
+//namespace AdaMovieStoreSample.Tests
+//{
+//    [TestClass]
+//    public class MovieRepositoryTests
+//    {
+//        [TestMethod]
+//        public void Get_all_should_return_3_results()
+//        {
+//            IMovieRepository repository = CreateRepository();
 
-            var movies = repository.GetAll();
-            Assert.IsTrue(movies.Count == 3);
-        }
+//            var movies = repository.GetAll();
+//            Assert.IsTrue(movies.Count == 3);
+//        }
 
-        private IMovieRepository CreateRepository()
-        {
-            return new MovieRepository();
-        }
-    }
-}
+//        private IMovieRepository CreateRepository()
+//        {
+//            return new MovieRepository();
+//        }
+//    }
+//}

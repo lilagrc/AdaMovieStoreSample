@@ -35,7 +35,7 @@ namespace AdaMovieStoreSample.Controllers
         {
         }
 
-        // DELETE api/movies/5
+        //DELETE api/movies/5
         public void Delete(int id)
         {
         }

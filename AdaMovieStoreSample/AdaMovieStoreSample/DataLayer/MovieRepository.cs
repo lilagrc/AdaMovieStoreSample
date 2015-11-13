@@ -14,7 +14,7 @@ namespace AdaMovieStoreSample.DataLayer
 {
     public class MovieRepository
     {
-        private SqlConnection db = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFileName=C:\Users\Michelle\Source\Repos\AdaMovieStoreSample\AdaMovieStoreSample\AdaMovieStoreSample\App_Data\videoStore.mdf;Integrated Security=True");
+        private SqlConnection db = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFileName=C:\Users\AdaRockstar\Source\Repos\AdaMovieStoreSample\AdaMovieStoreSample\AdaMovieStoreSample\App_Data\VideoAPI.mdf;Integrated Security=True");
 
         public List<Movie> GetAll()
         {
@@ -35,8 +35,9 @@ namespace AdaMovieStoreSample.DataLayer
             try
             {
                 SqlCommand command = new SqlCommand(
-                    "insert into movies (title, overview, release_date, inventory) values (@title, @overview, @release_date, @inventory)",
+                    "insert into movies (id, title, overview, release_date, inventory) values (@id, @title, @overview, @release_date, @inventory)",
                     this.db);
+                command.Parameters.AddWithValue("@id", movie.Id);
                 command.Parameters.AddWithValue("@title", movie.Title);
                 command.Parameters.AddWithValue("@overview", movie.Overview);
                 command.Parameters.AddWithValue("@release_date", movie.ReleaseDate);

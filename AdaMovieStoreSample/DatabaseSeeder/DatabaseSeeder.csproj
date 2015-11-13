@@ -50,6 +50,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AdaMovieStoreSample.Tests\AdaMovieStoreSample.Tests.csproj">
+      <Project>{3876f129-13bb-49f7-83ee-ae78714bf606}</Project>
+      <Name>AdaMovieStoreSample.Tests</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AdaMovieStoreSample\AdaMovieStoreSample.csproj">
       <Project>{608bc861-33f8-47d7-b80b-4a8ce2afa39d}</Project>
       <Name>AdaMovieStoreSample</Name>

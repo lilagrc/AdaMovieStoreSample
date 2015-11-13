@@ -21,15 +21,20 @@ namespace AdaMovieStoreSample.DataLayer
 
             MovieRepository repository = new MovieRepository();
 
+
+            int counter = 1;
             // Process the data
             foreach (JToken token in data)
             {
                 Movie m = new Movie();
+                counter++ ;
+                m.Id = counter;
                 m.Title = token["title"].Value<string>();
                 m.Overview = token["overview"].Value<string>();
                 m.ReleaseDate = token["release_date"].Value<string>();
                 m.Inventory = token["inventory"].Value<int>();
 
+               
                 repository.Add(m);
             }
         }
@@ -45,9 +50,13 @@ namespace AdaMovieStoreSample.DataLayer
             CustomerRepository repository = new CustomerRepository();
 
             // Process the data
+            int counter = 0;
+
             foreach (JToken token in data)
             {
                 Customer c = new Customer();
+                counter++;
+                c.Id = counter;
                 c.Name = token["name"].Value<string>();
                 c.RegisteredAt = token["registered_at"].Value<string>();
                 c.Address = token["address"].Value<string>();
